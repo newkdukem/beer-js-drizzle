@@ -1,0 +1,49 @@
+{
+  "name": "beer-js-drizzle",
+  "version": "0.0.1",
+  "description": "Drizzle experiments for a BeerJs 0.33 talk",
+  "main": "index.js",
+  "author": "Nikola Demerdjiev",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint 'src/**/*.ts'",
+    "format": "prettier --write 'src/**/*.ts'",
+    "create-migration": "npm run build && npx typeorm migration:generate",
+    "migrate": "npm run build && npx typeorm migration:run",
+    "db:up": "docker-compose up -d",
+    "db:down": "docker-compose down",
+    "seed": "ts-node ./src/scripts/seeder.ts",
+    "dev": "npm run db:up && nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+    "build": "tsc",
+    "start": "node build/index.js"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.16.0",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.1",
+    "@types/pg": "^8.11.10",
+    "@typescript-eslint/eslint-plugin": "^8.18.0",
+    "@typescript-eslint/parser": "^8.18.0",
+    "drizzle-kit": "^0.30.0",
+    "eslint": "^9.16.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.13.0",
+    "nodemon": "^3.1.7",
+    "prettier": "^3.4.2",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.0"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.3.0",
+    "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.38.1",
+    "express": "^5.0.1",
+    "pg": "^8.13.1",
+    "postgres": "^3.4.5",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.20"
+  }
+}
